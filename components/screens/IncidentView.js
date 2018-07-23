@@ -283,7 +283,7 @@ class IncidentView extends React.Component {
       incidentType = 'Other'
     }
 
-    fetch('http://ec2-34-215-115-69.us-west-2.compute.amazonaws.com:3000/incidents', {
+    fetch('https://convoyer.mobsscmd.com/incidents', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

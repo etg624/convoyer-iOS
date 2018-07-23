@@ -39,7 +39,7 @@ class LoginView extends React.Component {
   }
 
   authenticate(username, password) {
-    fetch('http://ec2-34-215-115-69.us-west-2.compute.amazonaws.com:3000/guardauth', {
+    fetch('https://convoyer.mobsscmd.com/guardauth', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
