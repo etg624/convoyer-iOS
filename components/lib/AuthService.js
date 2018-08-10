@@ -249,7 +249,7 @@ class AuthService extends React.Component {
     // console.log('logging patrol service states idData');
     // console.log(state.idData);
 
-    socket = io('https://convoyer.mobsscmd.com', {secure: true});
+    socket = io('https://convoyer.mobsscmd.com');
 
 
     var self = this;
