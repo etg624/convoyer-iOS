@@ -283,7 +283,7 @@ class IncidentView extends React.Component {
       incidentType = 'Other'
     }
 
-    fetch('https://convoyer.mobsscmd.com/incidents', {
+    fetch(this.authService.getServerAddress() + '/incidents', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -418,6 +418,8 @@ class IncidentView extends React.Component {
                 authService.toast('Successfully uploaded the file.');
                 EventRegister.emit('new incident', idService.getCurrentIncidentID());
               } else {
+                console.log('logging video upload response');
+                console.log(xhr.responseText);
                 authService.toast('The file could not be uploaded.');
               }
             }
@@ -439,6 +441,8 @@ class IncidentView extends React.Component {
               authService.toast('Successfully uploaded the file.');
               EventRegister.emit('new incident', idService.getCurrentIncidentID());
             } else {
+              console.log('logging image upload response');
+              console.log(xhr.responseText);
               authService.toast('The file could not be uploaded.');
             }
           }

@@ -159,7 +159,7 @@ class IDService {
 
         console.log('setCurrentGuard called');
 
-        fetch('https://convoyer.mobsscmd.com/getGuard/' + username)
+        fetch(this.authService.getServerAddress() + '/getGuard/' + username)
             .then(res => res.json())
             .then(json => {
 

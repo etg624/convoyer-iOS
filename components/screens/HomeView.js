@@ -160,7 +160,7 @@ class HomeView extends React.Component {
   loadCurrentRoutes() {
 
 
-    fetch('https://convoyer.mobsscmd.com/currentroutes/' + this.idService.getCurrentGuardID())
+    fetch(this.authService.getServerAddress() + '/currentroutes/' + this.idService.getCurrentGuardID())
       .then(res => res.json())
       .then(json => {
 
@@ -174,7 +174,7 @@ class HomeView extends React.Component {
 
   loadCurrentCheckpoints(routeID) {
 
-    fetch('https://convoyer.mobsscmd.com/checkpoints/' + routeID)
+    fetch(this.authService.getServerAddress() + '/checkpoints/' + routeID)
       .then(res => res.json())
       .then(json => {
 
