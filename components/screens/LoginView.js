@@ -18,6 +18,7 @@ class LoginView extends React.Component {
     this.state = {
       username: '', password: '', error: '', loading: false, loggedIn: false,
       authData: {}
+      
     };
 
     this.idService = IDService.getInstance();
@@ -38,8 +39,16 @@ class LoginView extends React.Component {
     this.authenticate(username, password)
   }
 
+  
+
   authenticate(username, password) {
-    fetch(this.authService.getServerAddress() + '/guardauth', {
+
+    var serverAddress = this.authService.getServerAddress();
+
+    console.log('logging serverAddress from LoginView');
+    console.log(serverAddress);
+
+    fetch(serverAddress + '/guardauth', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -35,12 +35,10 @@ class IDService {
             currentGuardFirstName: "",
             currentGuardLastName: '',
             currentMessageID: '',
-            currentRouteID: ''
+            currentRouteID: '',
+            serverAddress: 'https://convoyer.mobsscmd.com'
         };
         this._loadState();
-
-
-
     }
 
     getState(callback) {
@@ -159,7 +157,7 @@ class IDService {
 
         console.log('setCurrentGuard called');
 
-        fetch(this.authService.getServerAddress() + '/getGuard/' + username)
+        fetch(this.state.serverAddress + '/getGuard/' + username)
             .then(res => res.json())
             .then(json => {
 

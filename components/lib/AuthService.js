@@ -48,7 +48,7 @@ class AuthService extends React.Component {
       isFirstLocation: true,
       currentLat: 0,
       currentLng: 0,
-      serverAddress: 'http://ec2-34-215-115-69.us-west-2.compute.amazonaws.com:3000'
+      serverAddress: 'https://convoyer.mobsscmd.com'
     };
 
     this.bgService = BGService.getInstance();
@@ -215,7 +215,7 @@ class AuthService extends React.Component {
     var deviceToken = JSON.stringify(token.token).replace(/"/g, '');
 
 
-    fetch(this.authService.getServerAddress() + '/addDeviceToken', {
+    fetch(this.serverAddress + '/addDeviceToken', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -250,7 +250,7 @@ class AuthService extends React.Component {
     // console.log('logging patrol service states idData');
     // console.log(state.idData);
 
-    socket = io(this.authService.getServerAddress() + '');
+    socket = io(this.serverAddress);
 
 
     var self = this;
@@ -342,7 +342,7 @@ class AuthService extends React.Component {
 
     this.idService.createMessageID();
 
-    fetch(this.authService.getServerAddress() + '/messages', {
+    fetch(this.serverAddress + '/messages', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -383,7 +383,7 @@ class AuthService extends React.Component {
     console.log(this.idService);
     console.log(this.idService.getCurrentGuardID());
 
-    fetch(this.authService.getServerAddress() + '/guards', {
+    fetch(this.serverAddress + '/guards', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -403,7 +403,7 @@ class AuthService extends React.Component {
 
     this.idService.createPatrolID();
 
-    fetch(this.authService.getServerAddress() + '/patrols', {
+    fetch(this.serverAddress + '/patrols', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -436,7 +436,7 @@ class AuthService extends React.Component {
 
     console.log('coordPut called');
 
-    fetch(this.authService.getServerAddress() + '/coordinates', {
+    fetch(this.serverAddress + '/coordinates', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -459,7 +459,7 @@ class AuthService extends React.Component {
 
     
 
-    fetch(this.authService.getServerAddress() + '/coordinates', {
+    fetch(this.serverAddress + '/coordinates', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -478,7 +478,7 @@ class AuthService extends React.Component {
 
     this.idService.createCoordID();
 
-    fetch(this.authService.getServerAddress() + '/coordinates', {
+    fetch(this.serverAddress + '/coordinates', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -501,7 +501,7 @@ class AuthService extends React.Component {
 
   coordDelete(patrolID) {
 
-    fetch(this.authService.getServerAddress() + '/coordinates/' + patrolID, {
+    fetch(this.serverAddress + '/coordinates/' + patrolID, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -515,7 +515,7 @@ class AuthService extends React.Component {
   routePut() {
 
 
-    fetch(this.authService.getServerAddress() + '/queueroute', {
+    fetch(this.serverAddress + '/queueroute', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -567,7 +567,7 @@ class AuthService extends React.Component {
   }
 
   getServerAddress(){
-    return this.serverAddress;
+    return this.state.serverAddress;
   }
 
   resetState() {
